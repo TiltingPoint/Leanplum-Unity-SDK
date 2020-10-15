@@ -14,7 +14,7 @@
 
 @property(strong, nonatomic) NSMutableArray *startBlocks, *variablesChangedBlocks,
 *interfaceChangedBlocks, *eventsChangedBlocks, *noDownloadsBlocks, *onceNoDownloadsBlocks,
-*startIssuedBlocks, *messageDisplayedBlocks, *messageClosedBlocks;
+*startIssuedBlocks, *messageDisplayedBlocks, *messageClosedBlocks, *actionTriggeredBlocks;
 @property(strong, nonatomic) NSMutableDictionary *actionBlocks, *actionResponders;
 @property(strong, nonatomic) NSMutableSet *startResponders, *variablesChangedResponders,
 *interfaceChangedResponders, *eventsChangedResponders, *noDownloadsResponders;

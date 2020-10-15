@@ -420,15 +420,19 @@ typedef void (^LeanplumMessageDisplayedCallbackBlock)(LPMessageArchiveData *mess
  */
 + (void)onMessageDisplayed:(LeanplumMessageDisplayedCallbackBlock)block;
 
-
-typedef void (^LeanplumMessageClosedCallbackBlock)(void);
+typedef void (^LeanplumMessageClosedCallbackBlock)(LPMessageArchiveData *messageArchiveData);
 
 /**
  * Block to call when a message is closed
  */
 + (void)onMessageClosed:(LeanplumMessageClosedCallbackBlock)block;
-+ (void)triggerMessageClosed;
++ (void)triggerMessageClosed:(LPActionContext *)context;
 
+typedef void (^LeanplumActionTriggeredCallbackBlock)(LPActionContext * context);
+/**
+ * Block to call when any action gets triggered
+ */
++ (void)onActionTriggered:(LeanplumActionTriggeredCallbackBlock)block;
 
 typedef BOOL (^LeanplumEmbeddedHTMLUrlCallbackBlock)(NSString *url);
 
