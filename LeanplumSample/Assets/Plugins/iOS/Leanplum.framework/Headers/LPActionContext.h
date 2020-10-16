@@ -28,6 +28,7 @@
 
 - (NSString *)actionName;
 - (NSDictionary *)actionArgs;
+- (NSString *)messageId;
 
 - (NSString *)stringNamed:(NSString *)name;
 - (NSString *)fileNamed:(NSString *)name;
