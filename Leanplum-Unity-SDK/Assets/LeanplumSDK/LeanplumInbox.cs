@@ -77,6 +77,12 @@ namespace LeanplumSDK
             /// Returns true if the inbox message is read.
             /// </summary>
             public bool IsRead = false;
+            
+                        
+            /// <summary>
+            /// Returns the actionData of the inbox message
+            /// </summary>
+            public string ActionData = null;
 
             /// <summary>
             /// ActionContext containing message data
@@ -274,6 +280,13 @@ namespace LeanplumSDK
                     if (isRead is bool value)
                     {
                         leanpluMessage.IsRead = value;
+                    }
+                }
+                if (dict.TryGetValue("actionData", out var actionData))
+                {
+                    if (actionData is string value)
+                    {
+                        leanpluMessage.ActionData = value;
                     }
                 }
 
