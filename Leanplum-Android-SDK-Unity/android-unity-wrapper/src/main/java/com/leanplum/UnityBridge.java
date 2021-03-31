@@ -312,24 +312,10 @@ public class UnityBridge {
     Leanplum.defineAction(name, kind, actionArgs, new ActionCallback() {
       @Override
       public boolean onResponse(ActionContext context) {
-
-        // Action Responses without Actual Data is Useless
-        try {
-           Map<String, Object> onResponseData = context.getArgs();
-           if(onResponseData != null)
-           {
-              makeCallbackToUnity(new JSONObject(onResponseData).toString());
-           }
-        }
-        catch(Exception ex) {
-          Log.e("[LPUnity/onResponse]",  "Action Response Failed with Exception" + ex);
-          return false;
-
         if (name != null && context != null) {
           String key = String.format("%s:%s", name, context.getMessageId());
           UnityActionContextBridge.actionContexts.put(key, context);
           makeCallbackToUnity("ActionResponder:" + key);
-
         }
         return true;
       }
@@ -442,6 +428,7 @@ public class UnityBridge {
       message.put("subtitle", msg.getSubtitle());
       message.put("imageFilePath", msg.getImageFilePath());
       message.put("imageURL", msg.getImageUrl());
+      message.put("actionData", msg.getActionData().toString());
       if (msg.getDeliveryTimestamp() != null) {
         message.put("deliveryTimestamp", formatter.format(msg.getDeliveryTimestamp()));
       }

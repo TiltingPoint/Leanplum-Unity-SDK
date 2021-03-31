@@ -572,6 +572,7 @@ extern "C"
                 @"deliveryTimestamp": deliveryTimestamp ?: [NSNull null],
                 @"expirationTimestamp": expirationTimestamp ?: [NSNull null],
                 @"isRead": @(message.isRead),
+                @"actionData": [message.actionData UTF8String],
             };
             [messageData addObject:data];
         }
