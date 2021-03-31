@@ -82,12 +82,12 @@ namespace LeanplumSDK
             /// <summary>
             /// Returns the actionData of the inbox message
             /// </summary>
-            public string ActionData = null;
+            public Dictionary<string, object> ActionData = null;
 
             /// <summary>
             /// ActionContext containing message data
             /// </summary>
-            internal IDictionary<string, object> ActionContext = null;
+            public IDictionary<string, object> ActionContext = null;
 
             /// <summary>
             /// Checks whether the message is still active.
@@ -286,7 +286,9 @@ namespace LeanplumSDK
                 {
                     if (actionData is string value)
                     {
-                        leanpluMessage.ActionData = value;
+                        leanpluMessage.ActionData = !string.IsNullOrEmpty(value)
+                            ? (Dictionary<string, object>) Json.Deserialize(value)
+                            : new Dictionary<string, object>();;
                     }
                 }
 
